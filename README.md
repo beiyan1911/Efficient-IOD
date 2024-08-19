@@ -10,5 +10,14 @@
 - mmdetection 3.0.0
 - mmcv 2.0.0
 
+The conda environment can be installed by referring to install.txt
 
-**We are doing some preparation work and the code will be released soon.**
+## Usage
+ Download COCO 2017 dataset and divide annotations into different incremental stages following <a href="https://github.com/Hi-FT/ERD" style="color: inherit;">ERD</a >. Then execute the following code to incrementally train EIOD on the 40+20X setting.
+#### 40+20X stage 0
+    CUDA_VISIBLE_DEVICES=0 ./tools/dist_train.sh configs/gfl_increment/gfl_r50_fpn_1x_coco_fd_stage_0_tal.py 1  --work-dir=./work_dir/gfl_increment/gfl_r50_fpn_1x_coco_fd_stage_0_tal
+#### 40+20X stage 1
+    CUDA_VISIBLE_DEVICES=0 ./tools/dist_train.sh configs/gfl_increment/gfl_r50_fpn_1x_coco_fd_40_20X_stage_1_adg_tal.py 1  --work-dir=./work_dir/gfl_increment/gfl_r50_fpn_1x_coco_fd_40_20X_stage_1_adg_tal
+#### 40+20X stage 2
+    CUDA_VISIBLE_DEVICES=0 ./tools/dist_train.sh configs/gfl_increment/gfl_r50_fpn_1x_coco_fd_40_20X_stage_2_adg_tal.py 1  --work-dir=./work_dir/gfl_increment/gfl_r50_fpn_1x_coco_fd_40_20X_stage_2_adg_tal
+
